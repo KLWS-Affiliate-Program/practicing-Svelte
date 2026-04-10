@@ -1,25 +1,47 @@
+# Core Django
 Django>=4.2,<5.0
 djangorestframework>=3.14
 django-cors-headers>=4.2
+drf-spectacular>=0.26
+
+# Authentication & Authorization
+djangorestframework-simplejwt>=5.3
+django-allauth>=0.56
+python-decouple>=3.8
+
+# Environment & Config  
+python-dotenv>=1.0
+django-environ>=0.11
+
+# Database & ORM
+psycopg2-binary>=2.9
+django-dirtyfields>=1.9
+django-simple-history>=3.4
+
+# Background Tasks
+celery>=5.3
 django-celery-beat>=2.5
 django-celery-results>=2.5
-djangorestframework-simplejwt>=5.3
-drf-spectacular>=0.26
-psycopg2-binary>=2.9
 redis>=5.0
-celery>=5.3
-python-dotenv>=1.0
-gunicorn>=21.2
-daphne>=4.0
-whitenoise>=6.5
 
-# Dev dependencies
+# Async & WebSocket
+daphne>=4.0
+asgiref>=3.7
+
+# Production
+gunicorn>=21.2
+whitenoise>=6.5
+Pillow>=10.0
+
+# Development
 pytest>=7.4
 pytest-django>=4.5
 pytest-cov>=4.1
 black>=23.9
-flake8>=6.1
+ruff>=0.1
 isort>=5.12
 mypy>=1.5
 django-debug-toolbar>=4.1
 factory-boy>=3.3
+Faker>=18.11
+pre-commit>=3.3

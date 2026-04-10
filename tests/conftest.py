@@ -1,10 +1,12 @@
 """
 Pytest configuration for Project Horizon.
 """
+
 import os
+
 import django
-from django.conf import settings
+
 
 def pytest_configure():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
     django.setup()

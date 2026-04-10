@@ -2,9 +2,8 @@
 API routing for Project Horizon.
 Central hub for all API endpoints.
 """
-from django.urls import path, include
 
-app_name = 'api'
+app_name = "api"
 
 urlpatterns = [
     # Add app-specific endpoints here
