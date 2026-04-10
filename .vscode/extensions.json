@@ -1,0 +1,32 @@
+{
+  // Project Horizon — Recommended VS Code Extensions
+  // VS Code will prompt every developer to install these when they open the project folder.
+  "recommendations": [
+    // --- Python & Linting ---
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "charliermarsh.ruff",
+
+    // --- Django ---
+    "batisteo.vscode-django",
+    "almahdi.code-django",
+
+    // --- Frontend (Tailwind + HTMX) ---
+    "bradlc.vscode-tailwindcss",
+    "otovo-oss.htmx-tags",
+
+    // --- Database ---
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+
+    // --- Docker ---
+    "ms-azuretools.vscode-docker",
+
+    // --- Git ---
+    "eamodio.gitlens",
+
+    // --- Productivity ---
+    "editorconfig.editorconfig",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

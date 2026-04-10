@@ -1,0 +1,133 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // ▶️  MASTER STARTUP — runs everything in sequence with one command
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "▶️ START: Full Dev Environment",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "🐳 Docker: Start Services",
+        "📦 Django: Migrate",
+        "🚀 Django: Run Server"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+
+    // ─── Docker ──────────────────────────────────────────────────────────────
+    {
+      "label": "🐳 Docker: Start Services",
+      "type": "shell",
+      "command": "docker compose up -d",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "🐳 Docker: Stop Services",
+      "type": "shell",
+      "command": "docker compose down",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "🐳 Docker: View Logs",
+      "type": "shell",
+      "command": "docker compose logs -f",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+
+    // ─── Django ───────────────────────────────────────────────────────────────
+    {
+      "label": "🚀 Django: Run Server",
+      "type": "shell",
+      "command": "python manage.py runserver",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "📦 Django: Migrate",
+      "type": "shell",
+      "command": "python manage.py migrate",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "📦 Django: Make Migrations",
+      "type": "shell",
+      "command": "python manage.py makemigrations",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "🌱 Django: Load Fixtures",
+      "type": "shell",
+      "command": "python manage.py loaddata fixtures/initial_data.json",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "👤 Django: Create Superuser",
+      "type": "shell",
+      "command": "python manage.py createsuperuser",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+
+    // ─── Testing ──────────────────────────────────────────────────────────────
+    {
+      "label": "🧪 Tests: Run All",
+      "type": "shell",
+      "command": "pytest tests/ -v",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "🧪 Tests: Run with Coverage",
+      "type": "shell",
+      "command": "pytest tests/ -v --cov=. --cov-report=html",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+
+    // ─── Celery ───────────────────────────────────────────────────────────────
+    {
+      "label": "⚙️ Celery: Start Worker",
+      "type": "shell",
+      "command": "celery -A config worker --loglevel=info",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "⚙️ Celery: Start Beat (Scheduler)",
+      "type": "shell",
+      "command": "celery -A config beat --loglevel=info",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+
+    // ─── Code Quality ─────────────────────────────────────────────────────────
+    {
+      "label": "🔍 Ruff: Lint & Fix",
+      "type": "shell",
+      "command": "ruff check . --fix",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "🎨 Ruff: Format",
+      "type": "shell",
+      "command": "ruff format .",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+
+  ]
+}
