@@ -1,0 +1,25 @@
+Django>=4.2,<5.0
+djangorestframework>=3.14
+django-cors-headers>=4.2
+django-celery-beat>=2.5
+django-celery-results>=2.5
+djangorestframework-simplejwt>=5.3
+drf-spectacular>=0.26
+psycopg2-binary>=2.9
+redis>=5.0
+celery>=5.3
+python-dotenv>=1.0
+gunicorn>=21.2
+daphne>=4.0
+whitenoise>=6.5
+
+# Dev dependencies
+pytest>=7.4
+pytest-django>=4.5
+pytest-cov>=4.1
+black>=23.9
+flake8>=6.1
+isort>=5.12
+mypy>=1.5
+django-debug-toolbar>=4.1
+factory-boy>=3.3

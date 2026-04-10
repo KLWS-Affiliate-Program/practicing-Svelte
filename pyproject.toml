@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-horizon"
+version = "0.1.0"
+description = "Project Horizon - Modern Django REST API with React/Svelte Frontend"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "KLWS Affiliate Program", email = "info@klws.af"}
+]
+keywords = ["django", "rest", "api", "react", "svelte"]
+
+dependencies = [
+    "Django>=4.2,<5.0",
+    "djangorestframework>=3.14",
+    "django-cors-headers>=4.2",
+    "django-celery-beat>=2.5",
+    "django-celery-results>=2.5",
+    "djangorestframework-simplejwt>=5.3",
+    "drf-spectacular>=0.26",
+    "psycopg2-binary>=2.9",
+    "redis>=5.0",
+    "celery>=5.3",
+    "python-dotenv>=1.0",
+    "gunicorn>=21.2",
+    "daphne>=4.0",
+    "whitenoise>=6.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-django>=4.5",
+    "pytest-cov>=4.1",
+    "black>=23.9",
+    "flake8>=6.1",
+    "isort>=5.12",
+    "mypy>=1.5",
+    "django-debug-toolbar>=4.1",
+    "factory-boy>=3.3",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_django = "django"
+known_first_party = "apps,config"
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+addopts = "--strict-markers --tb=short"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true

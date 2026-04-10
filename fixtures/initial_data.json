@@ -1,0 +1,4 @@
+# Initial fixture data for Project Horizon
+# Load with: python manage.py loaddata fixtures/initial_data.json
+
+[]
